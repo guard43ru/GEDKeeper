@@ -9,6 +9,10 @@ mkdir -p ~/rpmbuild/SOURCES
 mkdir -p ~/rpmbuild/SPECS
 mkdir -p ~/rpmbuild/SRPMS
 
+pwd
+ls -la ../
+ls -la ../bin/
+
 tar -zcf ~/rpmbuild/SOURCES/gedkeeper.tar.gz -T "$DIR/rpm/gk_files.txt"
 cp "$DIR/rpm/gedkeeper.spec" ~/rpmbuild/SPECS/gedkeeper.spec
 cd ~/rpmbuild/SPECS/
@@ -17,3 +21,5 @@ cd ~/rpmbuild/SPECS/
 rpmbuild -bb gedkeeper.spec
 
 cd "$DIR"
+
+ls -la ~/rpmbuild/RPMS/
