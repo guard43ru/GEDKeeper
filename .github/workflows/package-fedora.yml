@@ -15,10 +15,14 @@ jobs:
       with:
         submodules: recursive
     - name: Debug
-      run: dotnet --list-sdks
+      run: ls -la
     - name: Debug
-      run: dotnet --list-runtimes
+      run: dotnet sdk check
     - name: Build
-      run: dotnet build -c Linux_Release
+      run: dotnet build -v 1 -c Linux_Release
       working-directory: projects/GKv3
+    - name: Debug
+      run: du -d1 -h projects/GKv3/GEDKeeper3/
+    - name: Debug
+      run: ls -laR projects/GKv3/GEDKeeper3/bin/
 
