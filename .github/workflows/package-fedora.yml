@@ -19,7 +19,7 @@ jobs:
     - name: Debug
       run: dotnet sdk check
     - name: Build
-      run: dotnet build -c Linux_Release --runtime linux-x64 --output ./GEDKeeper3/release
+      run: dotnet build -c Linux_Release --output ./GEDKeeper3/release
       working-directory: projects/GKv3
     - name: Debug
       run: du -d1 -h projects/GKv3/GEDKeeper3/
