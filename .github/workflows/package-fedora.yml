@@ -15,8 +15,6 @@ jobs:
       with:
         submodules: recursive
     - name: Debug
-      run: sudo apt install rpmbuild
-    - name: Debug
       run: dotnet sdk check
     - name: Build
       run: dotnet build -c Linux_Release --runtime linux-x64 --output ./GEDKeeper3/release
