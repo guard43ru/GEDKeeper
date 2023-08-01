@@ -18,14 +18,14 @@ jobs:
       with:
         submodules: recursive
     - name: Debug
-      run: rpmbuild --version
-    - name: Debug
       run: dotnet sdk check
+    - name: Install dependencies
+      run: dotnet restore
     - name: Build
-      run: dotnet build -c Linux_Release
+      run: dotnet build -c Linux_Release --no-restore
       working-directory: projects/GKv3
     - name: Debug
       run: du -d1 -h
-    - name: Debug
+    - name: Package
       run: bash ./gk_linux_rpm_fedora_package.sh
       working-directory: deploy
