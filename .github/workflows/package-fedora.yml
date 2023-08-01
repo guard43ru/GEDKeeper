@@ -20,7 +20,7 @@ jobs:
     - name: Debug
       run: dotnet sdk check
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore -c Linux_Release
       working-directory: projects/GKv3
     - name: Build
       run: dotnet build -c Linux_Release --no-restore
