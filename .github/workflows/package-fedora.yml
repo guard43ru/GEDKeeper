@@ -27,5 +27,5 @@ jobs:
     - name: Debug
       run: du -d1 -h
     - name: Debug
-      run: ls -la && gk_linux_rpm_fedora_package.sh
+      run: bash ./gk_linux_rpm_fedora_package.sh
       working-directory: deploy
