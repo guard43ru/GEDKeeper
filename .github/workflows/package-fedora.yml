@@ -15,7 +15,7 @@ jobs:
       with:
         submodules: recursive
     - name: Debug
-      run: apt install rpmbuild
+      run: sudo apt install rpmbuild
     - name: Debug
       run: dotnet sdk check
     - name: Build
