@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ "master" ]
 
+env:
+  DOTNET_VERSION: '6.0.*'
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,10 +22,10 @@ jobs:
     - name: Debug
       run: dotnet sdk check
     - name: Build
-      run: dotnet build -c Linux_Release --output ./GEDKeeper3/release
+      run: dotnet build -c Linux_Release
       working-directory: projects/GKv3
     - name: Debug
-      run: du -d1 -h projects/GKv3/GEDKeeper3/
+      run: du -d2 -h projects/GKv3/
     - name: Debug
-      run: ls -laR projects/GKv3/GEDKeeper3/release
+      run: ls -la projects/GKv3/GEDKeeper3
 
