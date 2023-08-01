@@ -23,6 +23,7 @@ jobs:
       run: dotnet sdk check
     - name: Build
       run: dotnet build -c Linux_Release
+      working-directory: projects/GKv3
     - name: Debug
       run: du -d1 -h
     - name: Debug
