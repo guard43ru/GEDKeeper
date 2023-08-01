@@ -1,0 +1,24 @@
+name: Package GEDKeeper3 for Fedora
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Init
+      uses: actions/checkout@v3
+      with:
+        submodules: recursive
+    - name: Debug
+      run: dotnet --list-sdks
+    - name: Debug
+      run: dotnet --list-runtimes
+    - name: Build
+      run: dotnet build -c Linux_Release
+      working-directory: projects/GKv3
+
