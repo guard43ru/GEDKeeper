@@ -17,24 +17,22 @@ jobs:
       uses: actions/checkout@v3
       with:
         submodules: recursive
-    - name: Debug
+    - name: .NET SDK check
       run: dotnet sdk check
 # error NETSDK1084: There is no application host available for the specified RuntimeIdentifier 'freebsd-x64'
 # https://learn.microsoft.com/en-us/dotnet/devops/dotnet-build-github-action
 #    - name: Install dependencies
-#      run: dotnet restore -c Linux_Release
+#      run: dotnet restore
 #      working-directory: projects/GKv3
     - name: Build
       run: dotnet build -c Linux_Release
       working-directory: projects/GKv3
-    - name: Debug
-      run: du -d1 -h
     - name: Package
       run: bash ./gk_linux_rpm_fedora_package.sh
       working-directory: deploy
     - name: Upload
       uses: actions/upload-artifact@v3
       with:
-        name: GEDKeeper3
+        name: gedkeeper3-rpm
         path: ~/rpmbuild/RPMS/x86_64/*.rpm
         if-no-files-found: error
