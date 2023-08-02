@@ -36,5 +36,5 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: GEDKeeper3
-        path: ~/rpmbuild/RPMS/*.rpm
+        path: ~/rpmbuild/RPMS/x86_64/*.rpm
         if-no-files-found: error
