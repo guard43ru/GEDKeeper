@@ -15,6 +15,7 @@ BuildArch:	x86_64
 #Requires:	mono-data
 #Requires:	mono-winforms
 #Requires:	lua
+Requires:	dotnet-runtime-6.0
 Requires:	sqlite
 
 AutoReq:	no
