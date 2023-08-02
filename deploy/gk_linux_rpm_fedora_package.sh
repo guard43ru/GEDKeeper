@@ -10,8 +10,8 @@ mkdir -p ~/rpmbuild/SPECS
 mkdir -p ~/rpmbuild/SRPMS
 
 pwd
-ls -la ../bin/GEDKeeper3*
-ls -la ../bin/GEDKeeper3/
+file ../bin/GEDKeeper3
+mv ../bin/GEDKeeper3 ../bin/GEDKeeper3.exe
 
 tar -zcf ~/rpmbuild/SOURCES/gedkeeper.tar.gz -T "$DIR/rpm/gk_files.txt"
 cp "$DIR/rpm/gedkeeper.spec" ~/rpmbuild/SPECS/gedkeeper.spec
