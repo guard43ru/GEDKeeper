@@ -11,10 +11,6 @@ Url:		https://github.com/serg-norseman/gedkeeper
 Source:         %{name}.tar.gz
 BuildArch:	x86_64
 
-#Requires:	mono-core
-#Requires:	mono-data
-#Requires:	mono-winforms
-#Requires:	lua
 Requires:	dotnet-runtime-6.0
 Requires:	sqlite
 

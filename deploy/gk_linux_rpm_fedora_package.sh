@@ -9,9 +9,6 @@ mkdir -p ~/rpmbuild/SOURCES
 mkdir -p ~/rpmbuild/SPECS
 mkdir -p ~/rpmbuild/SRPMS
 
-ls -la ../bin/
-find ../plugins/runtimes/ -type d -not -name 'linux-x64' -not -name 'runtimes' -exec rm -rf {} \;
-
 tar -zcf ~/rpmbuild/SOURCES/gedkeeper.tar.gz -T "$DIR/rpm/gk_files.txt"
 cp "$DIR/rpm/gedkeeper.spec" ~/rpmbuild/SPECS/gedkeeper.spec
 cd ~/rpmbuild/SPECS/
@@ -20,5 +17,3 @@ cd ~/rpmbuild/SPECS/
 rpmbuild -bb gedkeeper.spec
 
 cd "$DIR"
-
-ls -la ~/rpmbuild/RPMS/
