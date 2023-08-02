@@ -46,7 +46,7 @@ cp -r bin \
 	samples \
 	scripts %{buildroot}%{_libdir}/%{name}
 
-file /home/runner/rpmbuild/BUILDROOT/gedkeeper-3.2.1-1.x86_64/usr/lib64/gedkeeper/plugins/runtimes/linux-mips64/native/libe_sqlite3.so
+ls -la %{buildroot}%{_libdir}/%{name}/plugins/runtimes/
 
 ## E: zero-length
 #rm -rf %{buildroot}%{_libdir}/%{name}/scripts/readme.txt
