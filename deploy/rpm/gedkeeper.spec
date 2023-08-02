@@ -46,11 +46,8 @@ cp -r bin \
 	samples \
 	scripts %{buildroot}%{_libdir}/%{name}
 
-ls -la %{buildroot}%{_libdir}/%{name}/plugins/runtimes/
-
 ## E: zero-length
 #rm -rf %{buildroot}%{_libdir}/%{name}/scripts/readme.txt
-
 
 %changelog
 * Apr 28 2023 GEDKeeper - 3.2.1
