@@ -33,9 +33,6 @@ AutoReqProv:	no
 
 %prep
 %setup -qc
-ls -la bin
-ls -la scripts
-ls -la samples
 
 %install
 install -Dm 0755 gk_run.sh %{buildroot}%{_bindir}/gk_run.sh
@@ -49,11 +46,10 @@ cp -r bin \
 	samples \
 	scripts %{buildroot}%{_libdir}/%{name}
 
-ls -laR %{buildroot}
-cat %{buildroot}%{_libdir}/%{name}/scripts/readme.txt
+file /home/runner/rpmbuild/BUILDROOT/gedkeeper-3.2.1-1.x86_64/usr/lib64/gedkeeper/plugins/runtimes/linux-mips64/native/libe_sqlite3.so
 
 ## E: zero-length
-rm -rf %{buildroot}%{_libdir}/%{name}/scripts/readme.txt
+#rm -rf %{buildroot}%{_libdir}/%{name}/scripts/readme.txt
 
 
 %changelog
