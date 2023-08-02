@@ -10,6 +10,7 @@ mkdir -p ~/rpmbuild/SPECS
 mkdir -p ~/rpmbuild/SRPMS
 
 ls -la ../plugins/runtimes/
+find ../plugins/runtimes/ -type d -not -name 'linux-x64'
 find ../plugins/runtimes/ -type d -not -name 'linux-x64' -exec rm -rf {} \;
 ls -la ../plugins/runtimes/
 
