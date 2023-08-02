@@ -32,3 +32,9 @@ jobs:
     - name: Package
       run: bash ./gk_linux_rpm_fedora_package.sh
       working-directory: deploy
+    - name: Upload
+      uses: actions/upload-artifact@v3
+      with:
+        name: GEDKeeper3
+        path: ~/rpmbuild/RPMS/*.rpm
+        if-no-files-found: error
