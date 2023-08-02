@@ -33,13 +33,9 @@ AutoReqProv:	no
 
 %prep
 %setup -qc
-ls -la
+ls -la bin
 ls -la scripts
-find . -type f -iname "*.dll" -exec chmod -x {} \;
-find ./locales -type f -exec chmod -x '{}' \;
-find ./plugins -type f -exec chmod -x '{}' \;
-find ./scripts -type f -exec chmod -x '{}' \;
-find ./samples -type f -exec chmod -x '{}' \;
+ls -la samples
 
 %install
 install -Dm 0755 gk_run.sh %{buildroot}%{_bindir}/gk_run.sh
@@ -53,8 +49,12 @@ cp -r bin \
 	samples \
 	scripts %{buildroot}%{_libdir}/%{name}
 
+ls -laR %{buildroot}
+cat %{buildroot}%{_libdir}/%{name}/scripts/readme.txt
+
 ## E: zero-length
 rm -rf %{buildroot}%{_libdir}/%{name}/scripts/readme.txt
+
 
 %changelog
 * Apr 28 2023 GEDKeeper - 3.2.1
