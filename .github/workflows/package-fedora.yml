@@ -10,7 +10,7 @@ env:
   DOTNET_VERSION: '6.0.*'
 
 jobs:
-  build:
+  build-fedora:
     runs-on: ubuntu-latest
     steps:
     - name: Init
