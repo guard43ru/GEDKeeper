@@ -33,6 +33,8 @@ AutoReqProv:	no
 
 %prep
 %setup -qc
+ls -la
+ls -la scripts
 find . -type f -iname "*.dll" -exec chmod -x {} \;
 find ./locales -type f -exec chmod -x '{}' \;
 find ./plugins -type f -exec chmod -x '{}' \;
