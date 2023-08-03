@@ -17,6 +17,7 @@ Requires:	sqlite
 pwd
 ls -la %{buildroot}
 
+# main install
 mkdir -p %{buildroot}%{_libdir}/%{name}
 cp -r bin \
 	locales \
@@ -24,18 +25,26 @@ cp -r bin \
 	samples \
 	scripts %{buildroot}%{_libdir}/%{name}
 
+# clean multi-arch builds
+ls -la %{buildroot}%{_libdir}/%{name}/plugins/runtimes/
+rm -rf %{buildroot}%{_libdir}/%{name}/plugins/runtimes
+install -D plugins/runtimes/linux-arm64 %{buildroot}%{_libdir}/%{name}/plugins/runtimes/
+
+# create binary file
 mkdir -p %{buildroot}%{_bindir}
-ln -fs %{buildroot}%{_libdir}/%{name}/bin/GEDKeeper3 %{buildroot}/%{_bindir}/%{name}
+ln -fs %{buildroot}%{_libdir}/%{name}/bin/GEDKeeper3 %{buildroot}%{_bindir}/%{name}
 
 install -D deploy/application-x-%{name}.xml %{buildroot}%{_datadir}/mime/application-x-%{name}.xml
 install -D deploy/%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 install -D deploy/%{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
 
 cd %{buildroot}
+pwd
 #chmod -Rf a+rX,u+w,g-w,o-w .
 #chmod -Rf a-x .
 #chmod a+x %{buildroot}/%{_bindir}/%{name}
 ls -la
+ls -la usr
 
 %files
 %license LICENSE
