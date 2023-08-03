@@ -24,7 +24,7 @@ cp -r bin \
 	samples \
 	scripts %{buildroot}%{_libdir}/%{name}
 
-mkdir -p %{buildroot}/%{_bindir}
+mkdir -p %{buildroot}%{_bindir}
 ln -fs %{buildroot}%{_libdir}/%{name}/bin/GEDKeeper3 %{buildroot}/%{_bindir}/%{name}
 
 install -D deploy/application-x-%{name}.xml %{buildroot}%{_datadir}/mime/application-x-%{name}.xml
@@ -32,10 +32,9 @@ install -D deploy/%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.d
 install -D deploy/%{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
 
 cd %{buildroot}
-chmod -Rf a+rX,u+w,g-w,o-w .
-chmod -Rf a-x .
-chmod a+x %{buildroot}/%{_bindir}/%{name}
-
+#chmod -Rf a+rX,u+w,g-w,o-w .
+#chmod -Rf a-x .
+#chmod a+x %{buildroot}/%{_bindir}/%{name}
 ls -la
 
 %files
