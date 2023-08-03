@@ -28,7 +28,7 @@ cp -r bin \
 # clean multi-arch builds
 ls -la %{buildroot}%{_libdir}/%{name}/plugins/runtimes/
 rm -rf %{buildroot}%{_libdir}/%{name}/plugins/runtimes
-install -D plugins/runtimes/linux-x64 %{buildroot}%{_libdir}/%{name}/plugins/runtimes/
+install -D plugins/runtimes/linux-x64/ %{buildroot}%{_libdir}/%{name}/plugins/runtimes/
 ls -la %{buildroot}%{_libdir}/%{name}/plugins/runtimes/
 
 # create binary file

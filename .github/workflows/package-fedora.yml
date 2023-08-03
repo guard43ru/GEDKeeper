@@ -29,7 +29,7 @@ jobs:
       # run: dotnet build -c Linux_Release
       working-directory: projects/GKv3
     - name: Package
-      run: rpmbuild --build-in-place -bb deploy/rpm/gedkeeper-github-actions.spec
+      run: rpmbuild --build-in-place -bb deploy/rpm/gedkeeper-gh-act.spec
     - name: Upload
       uses: actions/upload-artifact@v3
       with:
