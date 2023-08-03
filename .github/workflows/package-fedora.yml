@@ -30,7 +30,7 @@ jobs:
     # - name: Prepare work directory
     #   run: mkdir -p /home/runner/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS} && ls -la /home/runner/rpmbuild/
     - name: Package
-      run: mkdir BUILDROOT && rpmbuild --build-in-place --buildroot=./BUILDROOT -bb deploy/rpm/gedkeeper-github-actions.spec
+      run: rpmbuild --build-in-place -bb deploy/rpm/gedkeeper-github-actions.spec
     - name: Upload
       uses: actions/upload-artifact@v3
       with:

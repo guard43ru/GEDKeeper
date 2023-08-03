@@ -1,39 +1,40 @@
-%define		rname GEDKeeper
-%define		summary GEDKeeper - program for work with personal genealogical database
-
 Name:		gedkeeper
 Version:	3.2.1
-Release:	1
-Summary:	%{summary}
+Release:	1%{?dist}
+Summary:	GEDKeeper - program for work with personal genealogical database.
 License:	GPLv3
 Group:		Applications/Editors
 Url:		https://github.com/serg-norseman/gedkeeper
 BuildArch:	x86_64
 
-%description
-%{summary}.
-
 Requires:	dotnet-runtime-6.0
 Requires:	sqlite
 
-AutoReq:	no
-AutoReqProv:	no
-
 %install
+
 pwd
+ls -la %{buildroot}
+
+mkdir -p %{buildroot}%{_libdir}/%{name}
+cp -r bin \
+	locales \
+	plugins \
+	samples \
+	scripts %{buildroot}%{_libdir}/%{name}
+
+mkdir -p %{buildroot}/%{_bindir}
+ln -fs %{buildroot}%{_libdir}/%{name}/bin/GEDKeeper3 %{buildroot}/%{_bindir}/%{name}
+
+install -D deploy/application-x-%{name}.xml %{buildroot}%{_datadir}/mime/application-x-%{name}.xml
+install -D deploy/%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -D deploy/%{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
+
+cd %{buildroot}
+chmod -Rf a+rX,u+w,g-w,o-w .
+chmod -Rf a-x .
+chmod a+x %{buildroot}/%{_bindir}/%{name}
+
 ls -la
-#install -Dm 0755 gk_run.sh %{buildroot}%{_bindir}/gk_run.sh
-#install -d 0755 %{buildroot}%{_libdir}/%{name}
-#install -Dm 0644 application-x-%{name}.xml %{buildroot}%{_datadir}/mime/application-x-%{name}.xml
-#install -Dm 0644 %{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
-#install -Dm 0644 %{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
-#cp -r bin \
-#	locales \
-#	plugins \
-#	samples \
-#	scripts %{buildroot}%{_libdir}/%{name}
-#/bin/chmod -Rf a+rX,u+w,g-w,o-w .
-#/bin/chmodchmod -Rf a-x .
 
 %files
 %license LICENSE
