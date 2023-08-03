@@ -1,7 +1,9 @@
+%define		summary GEDKeeper - program for work with personal genealogical database.
+
 Name:		gedkeeper
 Version:	3.2.1
 Release:	1%{?dist}
-Summary:	GEDKeeper - program for work with personal genealogical database.
+Summary:	%{summary}
 License:	GPLv3
 Group:		Applications/Editors
 Url:		https://github.com/serg-norseman/gedkeeper
@@ -43,6 +45,9 @@ ls -la
 %{_datadir}/mime/*.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
+
+%description
+%{summary}
 
 %changelog
 * Apr 28 2023 GEDKeeper - 3.2.1
