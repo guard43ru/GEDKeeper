@@ -24,13 +24,13 @@ jobs:
 #    - name: Install dependencies
 #      run: dotnet restore
 #      working-directory: projects/GKv3
-    - name: Build
-      run: dotnet build -c Linux_Release
-      working-directory: projects/GKv3
+    # - name: Build
+    #   run: dotnet build -c Linux_Release
+    #   working-directory: projects/GKv3
     - name: Prepare work directory
-      run: mkdir -p /home/runner/rpmbuild/BUILD BUILDROOT RPMS SOURCES SPECS SRPMS
+      run: mkdir -p /home/runner/rpmbuild/BUILD BUILDROOT RPMS SOURCES SPECS SRPMS && pwd && ls -la
     - name: Package
-      run: rpmbuild -bb deploy/rpm/gedkeeper3.spec
+      run: pwd && ls -la && rpmbuild -bb deploy/rpm/gedkeeper3.spec
     - name: Upload
       uses: actions/upload-artifact@v3
       with:
