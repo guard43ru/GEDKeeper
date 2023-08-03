@@ -14,9 +14,6 @@ Requires:	sqlite
 
 %install
 
-pwd
-ls -la %{buildroot}
-
 # main install
 mkdir -p %{buildroot}%{_libdir}/%{name}
 cp -r bin \
@@ -26,10 +23,12 @@ cp -r bin \
 	scripts %{buildroot}%{_libdir}/%{name}
 
 # clean multi-arch builds
+install --version
 ls -la %{buildroot}%{_libdir}/%{name}/plugins/runtimes/
-rm -rf %{buildroot}%{_libdir}/%{name}/plugins/runtimes/*
-ls -la %{buildroot}%{_libdir}/%{name}/plugins/runtimes/
-install -v -t %{buildroot}%{_libdir}/%{name}/plugins/runtimes/ -D plugins/runtimes/linux-x64
+rm -rf %{buildroot}%{_libdir}/%{name}/plugins/runtimes
+ls -la
+ls -la plugins/
+install -v -t %{buildroot}%{_libdir}/%{name}/plugins/runtimes/linux-x64/ -D plugins/runtimes/linux-x64/*
 ls -la %{buildroot}%{_libdir}/%{name}/plugins/runtimes/
 
 # create binary file
