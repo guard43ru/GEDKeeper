@@ -32,10 +32,10 @@ ls -la %{buildroot}%{_libdir}/%{name}/plugins/runtimes/
 mkdir -p %{buildroot}%{_bindir}
 ln -fs %{buildroot}%{_libdir}/%{name}/bin/GEDKeeper3 %{buildroot}%{_bindir}/%{name}
 
-install deploy/rpm/%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
-install deploy/%{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
+install -D deploy/rpm/%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -D deploy/%{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
 rpm --eval %{_metainfodir}
-install deploy/application-x-%{name}.xml %{buildroot}/%{_metainfodir}/%{name}.metainfo.xml
+install -D deploy/application-x-%{name}.xml %{buildroot}/%{_metainfodir}/%{name}.metainfo.xml
 
 cd %{buildroot}
 chmod -Rf a+rX,u+w,g-w,o-w .
