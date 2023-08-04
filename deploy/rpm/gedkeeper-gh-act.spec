@@ -25,16 +25,17 @@ cp -r bin \
 # clean multi-arch builds
 ls -la %{buildroot}%{_libdir}/%{name}/plugins/runtimes/
 rm -rf %{buildroot}%{_libdir}/%{name}/plugins/runtimes
-install -v -t %{buildroot}%{_libdir}/%{name}/plugins/runtimes/linux-x64/native/ -D plugins/runtimes/linux-x64/native/*
+install -t %{buildroot}%{_libdir}/%{name}/plugins/runtimes/linux-x64/native/ -D plugins/runtimes/linux-x64/native/*
 ls -la %{buildroot}%{_libdir}/%{name}/plugins/runtimes/
 
 # create binary file
 mkdir -p %{buildroot}%{_bindir}
 ln -fs %{buildroot}%{_libdir}/%{name}/bin/GEDKeeper3 %{buildroot}%{_bindir}/%{name}
 
-install deploy/application-x-%{name}.xml %{buildroot}%{_metainfodir}/%{name}.metainfo.xml
 install deploy/rpm/%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 install deploy/%{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
+rpm --eval %{_metainfodir}
+install deploy/application-x-%{name}.xml %{buildroot}/%{_metainfodir}/%{name}.metainfo.xml
 
 cd %{buildroot}
 chmod -Rf a+rX,u+w,g-w,o-w .
