@@ -42,7 +42,8 @@ cd %{buildroot}
 chmod -Rf a+rX,u+w,g-w,o-w .
 chmod -Rf a-x .
 cd %{buildroot}%{_bindir}
-chmod a+x .
+ls -la
+chmod a+x %{name}
 ls -la
 cd %{buildroot}
 
