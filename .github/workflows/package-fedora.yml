@@ -2,10 +2,9 @@ name: Package GEDKeeper3 for Fedora
 
 on:
   push:
-    branches:
-      - separate-build-fedora
-    tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+'
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
 
 env:
   DOTNET_VERSION: '6.0.*'
