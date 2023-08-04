@@ -2,9 +2,10 @@ name: Package GEDKeeper3 for Fedora
 
 on:
   push:
-    branches: [ "separate-build-fedora" ]
-  pull_request:
-    branches: [ "master" ]
+    branches:
+      - separate-build-fedora
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
 env:
   DOTNET_VERSION: '6.0.*'
@@ -28,8 +29,15 @@ jobs:
       run: dotnet build -c Linux_Debug
       # run: dotnet build -c Linux_Release
       working-directory: projects/GKv3
+    - name: Get latest tag
+      uses: actions-ecosystem/action-get-latest-tag@v1
+      id: get-latest-tag
+      with:
+        semver_only: true
+        with_initial_version: true
+        initial_version: '1.0.0'
     - name: Package
-      run: rpmbuild --build-in-place -bb deploy/rpm/gedkeeper-gh-act.spec
+      run: rpmbuild --build-in-place --define "gh_version ${{ steps.get-latest-tag.outputs.tag }}" -bb deploy/rpm/gedkeeper-gh-act.spec
     - name: Upload
       uses: actions/upload-artifact@v3
       with:
