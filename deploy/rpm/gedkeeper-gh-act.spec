@@ -1,7 +1,7 @@
 %define		summary GEDKeeper - program for work with personal genealogical database.
 
 Name:		gedkeeper
-Version:	%{gh_version}
+Version:	3.2.1
 Release:	1%{?dist}
 Summary:	%{summary}
 License:	GPLv3
