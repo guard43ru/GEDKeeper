@@ -30,15 +30,13 @@ ls -la %{buildroot}%{_libdir}/%{name}/plugins/runtimes/
 
 # create binary file
 mkdir -p %{buildroot}%{_bindir}
-ln -fs %{buildroot}%{_libdir}/%{name}/bin/GEDKeeper3 %{buildroot}%{_bindir}/%{name}
+ln -fs %{_libdir}/%{name}/bin/GEDKeeper3 %{buildroot}%{_bindir}/%{name}
 
 install -D deploy/rpm/%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 install -D deploy/%{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
 #rpm --eval %{_metainfodir}		# not found ?!
 #install -D deploy/application-x-%{name}.xml %{buildroot}%{_metainfodir}/%{name}.metainfo.xml
 install -D deploy/application-x-%{name}.xml %{buildroot}%{_datadir}/metainfo/%{name}.metainfo.xml
-
-cd %{buildroot}
 
 cd %{buildroot}%{_bindir}
 ls -la
@@ -51,6 +49,7 @@ ls -la usr/bin/
 ls -la usr/lib64/%{name}/bin
 ls -la usr/lib64/%{name}/plugins
 
+#cd %{buildroot}
 #chmod -vRf a+rX,u+w,g-w,o-w .
 #chmod -vRf a-x .
 
@@ -58,9 +57,9 @@ ls -la usr/lib64/%{name}/plugins
 %license LICENSE
 %{_bindir}/%{name}
 %{_libdir}/%{name}
-%{_metainfodir}/%{name}.metainfo.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
+%{_datadir}/metainfo/%{name}.metainfo.xml
 
 %description
 %{summary}
