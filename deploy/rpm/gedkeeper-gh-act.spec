@@ -10,7 +10,7 @@ Url:		https://github.com/serg-norseman/gedkeeper
 BuildArch:	x86_64
 
 Requires:	dotnet-runtime-6.0
-Requires:	sqlite
+#Requires:	sqlite
 
 %install
 
@@ -23,7 +23,6 @@ cp -r bin \
 	scripts %{buildroot}%{_libdir}/%{name}
 
 # clean multi-arch builds
-install --version
 ls -la %{buildroot}%{_libdir}/%{name}/plugins/runtimes/
 rm -rf %{buildroot}%{_libdir}/%{name}/plugins/runtimes
 install -v -t %{buildroot}%{_libdir}/%{name}/plugins/runtimes/linux-x64/native/ -D plugins/runtimes/linux-x64/native/*
@@ -33,17 +32,20 @@ ls -la %{buildroot}%{_libdir}/%{name}/plugins/runtimes/
 mkdir -p %{buildroot}%{_bindir}
 ln -fs %{buildroot}%{_libdir}/%{name}/bin/GEDKeeper3 %{buildroot}%{_bindir}/%{name}
 
-install -D deploy/application-x-%{name}.xml %{buildroot}%{_datadir}/mime/application-x-%{name}.xml
-install -D deploy/%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
-install -D deploy/%{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
+install deploy/application-x-%{name}.xml %{buildroot}%{_metainfodir}/%{name}.metainfo.xml
+install deploy/rpm/%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
+install deploy/%{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
 
 cd %{buildroot}
-pwd
-#chmod -Rf a+rX,u+w,g-w,o-w .
-#chmod -Rf a-x .
-#chmod a+x %{buildroot}/%{_bindir}/%{name}
+chmod -Rf a+rX,u+w,g-w,o-w .
+chmod -Rf a-x .
+cd %{buildroot}%{_bindir}
+chmod a+x .
 ls -la
-ls -la usr
+cd %{buildroot}
+
+ls -la usr/
+ls -la usr/bin/
 
 %files
 %license LICENSE
