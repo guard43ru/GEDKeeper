@@ -49,9 +49,9 @@ ls -la usr/bin/
 
 %files
 %license LICENSE
-%{_bindir}/gk_run.sh
+%{_bindir}/%{name}
 %{_libdir}/%{name}
-%{_datadir}/mime/*.xml
+%{_metainfodir}/%{name}.metainfo.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
 
