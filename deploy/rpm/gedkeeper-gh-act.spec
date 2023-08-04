@@ -32,7 +32,7 @@ ls -la %{buildroot}%{_libdir}/%{name}/plugins/runtimes/
 mkdir -p %{buildroot}%{_bindir}
 ln -fs %{_libdir}/%{name}/bin/GEDKeeper3 %{buildroot}%{_bindir}/%{name}
 
-#rpm --eval %{_metainfodir}		# not found ?!
+#rpm --eval %{_metainfodir}		# not found ?! (TODO: check rpm version)
 #install -D deploy/application-x-%{name}.xml %{buildroot}%{_metainfodir}/%{name}.metainfo.xml
 install -D deploy/application-x-%{name}.xml %{buildroot}%{_datadir}/metainfo/%{name}.metainfo.xml
 install -D deploy/rpm/%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
