@@ -39,16 +39,20 @@ install -D deploy/%{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
 install -D deploy/application-x-%{name}.xml %{buildroot}%{_datadir}/metainfo/%{name}.metainfo.xml
 
 cd %{buildroot}
-chmod -Rf a+rX,u+w,g-w,o-w .
-chmod -Rf a-x .
+
 cd %{buildroot}%{_bindir}
 ls -la
-chmod a+x %{name}
+chmod -v a+x %{name}
 ls -la
-cd %{buildroot}
 
+cd %{buildroot}
 ls -la usr/
 ls -la usr/bin/
+ls -la usr/lib64/%{name}/bin
+ls -la usr/lib64/%{name}/plugins
+
+#chmod -vRf a+rX,u+w,g-w,o-w .
+#chmod -vRf a-x .
 
 %files
 %license LICENSE
