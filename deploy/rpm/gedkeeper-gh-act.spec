@@ -38,12 +38,12 @@ install -D deploy/%{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
 #install -D deploy/application-x-%{name}.xml %{buildroot}%{_metainfodir}/%{name}.metainfo.xml
 install -D deploy/application-x-%{name}.xml %{buildroot}%{_datadir}/metainfo/%{name}.metainfo.xml
 
+cd %{buildroot}
+chmod -cRf a=rX,a-x,u+w,g-w,o-w .
 ls -la %{buildroot}%{_libdir}/%{name}/bin/GEDKeeper3
 chmod -v a+x %{buildroot}%{_libdir}/%{name}/bin/GEDKeeper3
 ls -la %{buildroot}%{_libdir}/%{name}/bin/GEDKeeper3
 
-cd %{buildroot}
-chmod -cRf a=rX,a-x,u+w,g-w,o-w .
 
 %files
 %license LICENSE
