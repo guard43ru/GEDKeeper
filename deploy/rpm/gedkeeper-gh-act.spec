@@ -43,8 +43,7 @@ chmod -v a+x %{buildroot}%{_libdir}/%{name}/bin/GEDKeeper3
 ls -la %{buildroot}%{_libdir}/%{name}/bin/GEDKeeper3
 
 cd %{buildroot}
-chmod -cRf a+rX,u+w,g-w,o-w .
-chmod -cRf a-x .
+chmod -cRf a=rX,a-x,u+w,g-w,o-w .
 
 %files
 %license LICENSE
