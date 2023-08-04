@@ -26,8 +26,8 @@ cp -r bin \
 install --version
 ls -la %{buildroot}%{_libdir}/%{name}/plugins/runtimes/
 rm -rf %{buildroot}%{_libdir}/%{name}/plugins/runtimes
-ls -la
-ls -la plugins/
+ls -la plugins/runtimes/linux-x64/
+ls -la plugins/runtimes/linux-x64/native/
 install -v -t %{buildroot}%{_libdir}/%{name}/plugins/runtimes/linux-x64/ -D plugins/runtimes/linux-x64/*
 ls -la %{buildroot}%{_libdir}/%{name}/plugins/runtimes/
 
