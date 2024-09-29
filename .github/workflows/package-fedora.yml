@@ -14,11 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Init
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         submodules: recursive
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{env.DOTNET_VERSION}}
     - name: .NET SDK check
@@ -31,11 +31,15 @@ jobs:
     - name: Build
       run: dotnet build -p:Configuration=Release -p:Platform=Linux
       working-directory: projects/GKv3
+    - name: debug
+      run: git status
+    - name: check rpmbuild exists
+      run: which rpmbuild || apt update && apt install -y rpm
     - name: Package
       run: rpmbuild --build-in-place -bb deploy/rpm/gedkeeper-github.spec
     - name: Upload
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-        name: gedkeeper3-rpm
+        name: gedkeeper3
         path: ~/rpmbuild/RPMS/x86_64/*.rpm
         if-no-files-found: error
